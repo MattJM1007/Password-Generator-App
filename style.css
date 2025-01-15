@@ -253,6 +253,7 @@ main{
 
 #generate-button{
     width: 100%;
+    color: var(--pc-page-background);
     display: flex;
     align-items: center;
     justify-content: center;
