@@ -54,16 +54,21 @@ generateButton.addEventListener("click", () => {
 
   for (let i = 0; i < characters; i++) {
     const firstRandomNumber = Math.floor(Math.random() * userCheckedBoxes.length);
-    const randomField = userCheckedBoxes[firstRandomNumber];
+    const randomIndex = userCheckedBoxes[firstRandomNumber];
     
-    const secondRandomNumber = Math.floor(Math.random() * randomField.length)
-    const randomCharacter = randomField.charAt(secondRandomNumber);
+    const secondRandomNumber = Math.floor(Math.random() * randomIndex.length)
+    const randomCharacter = randomIndex.charAt(secondRandomNumber);
     
     userPassword += randomCharacter;  
   }
   
   updatePasswordDOM(userPassword);
-  showStrength(strength);
+
+  resetStrength();
+  
+  if(characters >= 8){
+    showStrength(strength);
+  };
 
   console.log(userPassword);
 });
@@ -99,41 +104,21 @@ function updatePasswordDOM (password) {
 }
 
 function showStrength(value){
-  const tooWeak = document.getElementById('too-weak');
-  const weak = document.getElementById('weak');
-  const medium = document.getElementById('medium');
-  const strong = document.getElementById('strong');
   const strengthBars = Array.from(document.querySelectorAll('.strength-bars'));
   const text = document.getElementById('password-strength-text');
-
-  strengthBars.forEach((bar) => bar.classList.remove('too-weak', 'weak', 'medium', 'strong'));
+  const strengthClasses = ['too-weak', 'weak', 'medium', 'strong'];
+  const strengthTexts = ["TOO WEAK", "WEAK", "MEDIUM", "STRONG"];
   
+  strengthBars.forEach((bar, i) => {
+    bar.classList.add(i < value ? strengthClasses[value - 1] : 'bar');
+  });
 
-  if(value === 1){
-    tooWeak.classList.add('too-weak');
-    text.innerText = 'too weak!'
-  }
+  text.innerText = `${strengthTexts[strength - 1]}`;
+}
 
-  if(value === 2){
-    tooWeak.classList.add('weak');
-    weak.classList.add('weak');
-    text.innerText = 'weak';
-  }
-
-  if(value === 3){
-    tooWeak.classList.add('medium');
-    weak.classList.add('medium');
-    medium.classList.add('medium')
-    text.innerText = 'medium';
-  }
-
-  if(value === 4){
-    tooWeak.classList.add('strong');
-    weak.classList.add('strong');
-    medium.classList.add('strong');
-    strong.classList.add('strong');
-    text.innerText = 'strong';
-  }
+function resetStrength(){
+  const strengthBars = Array.from(document.querySelectorAll('.strength-bars'));
+  strengthBars.forEach((bar) => bar.classList.remove('too-weak', 'weak', 'medium', 'strong', 'bar'));
 }
 
 function copyPasswordText() {
