@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
-  <script src="./index.js" defer></script>
-  
-  <title>Frontend Mentor | Password generator app</title>
-</head>
-<body>
-  <main>
-    <h1 class="title">Password Generator</h1>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./index.js" defer></script>
 
-    <section class="generated-password-container">
-      <h2 id="generated-password">P4$5W0rD!</h2>
-      <button id="copy-button">
-        <span id="copied-text" class="hidden">copied</span>
-        <img src="./assets/images/icon-copy.svg" alt="copy button icon" class="copy-icon">
-      </button>
-    </section>
+    <title>Frontend Mentor | Password generator app</title>
+  </head>
+  <body>
+    <main>
+      <h1 class="title">Password Generator</h1>
 
-    <section class="password-details">
-      <fieldset class="range-container">
-        <label for="password-slider" class="range-label">Character Length</label>
-        <input type="range" min="0" max="20" value="0" id="password-slider">
-        <span id="current-length">10</span>
-      </fieldset>
+      <section class="generated-password-container">
+        <h2 id="generated-password">P4$5W0rD!</h2>
+        <button id="copy-button">
+          <span id="copied-text" class="hidden">copied</span>
+          <img src="./assets/images/icon-copy.svg" alt="copy button icon" class="copy-icon" />
+        </button>
+      </section>
 
-      <fieldset class="checklist-container">
-        <label for="uppercase-checkbox" class="uppercase-label">
-          <input type="checkbox" id="uppercase-checkbox" name="Include Uppercase Checkbox" value="uppercase">
-          <span class="checkmark"></span>
-          Include Uppercase Letters
-        </label>
+      <section class="password-details">
+        <fieldset class="range-container">
+          <label for="password-slider" class="range-label">Character Length</label>
+          <input type="range" min="0" max="20" value="0" id="password-slider" />
+          <span id="current-length">10</span>
+        </fieldset>
 
-        <label for="lowercase-checkbox" class="lowercase-label">
-          <input type="checkbox" id="lowercase-checkbox" name="Include Lowercase Checkbox" value="lowercase">
-          <span class="checkmark"></span>
-          Include Lowercase Letters
-        </label> 
+        <fieldset class="checklist-container">
+          <label for="uppercase-checkbox" class="uppercase-label">
+            <input type="checkbox" id="uppercase-checkbox" name="Include Uppercase Checkbox" value="uppercase" />
+            <span class="checkmark"></span>
+            Include Uppercase Letters
+          </label>
 
-        <label for="numbers-checkbox" class="numbers-label">
-          <input type="checkbox" id="numbers-checkbox" name="Include Numbers Checkbox" value="numbers">
-          <span class="checkmark"></span>
-          Include Numbers
-        </label>  
+          <label for="lowercase-checkbox" class="lowercase-label">
+            <input type="checkbox" id="lowercase-checkbox" name="Include Lowercase Checkbox" value="lowercase" />
+            <span class="checkmark"></span>
+            Include Lowercase Letters
+          </label>
 
-        <label for="symbols-checkbox" class="symbols-label">
-          <input type="checkbox" id="symbols-checkbox" name="Include Symbols Checkbox" value="symbols">
-          <span class="checkmark"></span>
-          Include Symbols
-        </label>  
-      </fieldset>
+          <label for="numbers-checkbox" class="numbers-label">
+            <input type="checkbox" id="numbers-checkbox" name="Include Numbers Checkbox" value="numbers" />
+            <span class="checkmark"></span>
+            Include Numbers
+          </label>
 
-      <div class="strength-container">
-        <h3>Strength</h3>
-        <h4 id="password-strength-text"> </h4>
-        <div class="strength-bars" id="too-weak"></div>
-        <div class="strength-bars" id="weak"></div>
-        <div class="strength-bars" id="medium"></div>
-        <div class="strength-bars" id="strong"></div>
-      </div>
+          <label for="symbols-checkbox" class="symbols-label">
+            <input type="checkbox" id="symbols-checkbox" name="Include Symbols Checkbox" value="symbols" />
+            <span class="checkmark"></span>
+            Include Symbols
+          </label>
+        </fieldset>
 
-      <button id="generate-button">
-        Generate
-        <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" alt="right arrow icon"><path class="button-arrow"  fill="#24232C" d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"/></svg>
-      </button>
+        <div class="strength-container">
+          <h3>Strength</h3>
+          <h4 id="password-strength-text"></h4>
+          <div class="strength-bars" id="too-weak"></div>
+          <div class="strength-bars" id="weak"></div>
+          <div class="strength-bars" id="medium"></div>
+          <div class="strength-bars" id="strong"></div>
+        </div>
 
-    </section>
-
-  </main>
-
-</body>
+        <button id="generate-button">
+          Generate
+          <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" alt="right arrow icon">
+            <path class="button-arrow" fill="#24232C" d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z" />
+          </svg>
+        </button>
+      </section>
+    </main>
+  </body>
 </html>
