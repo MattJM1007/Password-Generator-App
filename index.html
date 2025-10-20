@@ -12,65 +12,70 @@
   </head>
   <body>
     <main>
-      <h1 class="title">Password Generator</h1>
+      <div class="container flow-content">
+        <h1 class="page-title">Password Generator</h1>
 
-      <section class="generated-password-container">
-        <h2 id="generated-password">P4$5W0rD!</h2>
-        <button id="copy-button">
-          <span id="copied-text" class="hidden">copied</span>
-          <img src="./assets/images/icon-copy.svg" alt="copy button icon" class="copy-icon" />
-        </button>
-      </section>
-
-      <section class="password-details">
-        <fieldset class="range-container">
-          <label for="password-slider" class="range-label">Character Length</label>
-          <input type="range" min="0" max="20" value="0" id="password-slider" />
-          <span id="current-length">10</span>
-        </fieldset>
-
-        <fieldset class="checklist-container">
-          <label for="uppercase-checkbox" class="uppercase-label">
-            <input type="checkbox" id="uppercase-checkbox" name="Include Uppercase Checkbox" value="uppercase" />
-            <span class="checkmark"></span>
-            Include Uppercase Letters
-          </label>
-
-          <label for="lowercase-checkbox" class="lowercase-label">
-            <input type="checkbox" id="lowercase-checkbox" name="Include Lowercase Checkbox" value="lowercase" />
-            <span class="checkmark"></span>
-            Include Lowercase Letters
-          </label>
-
-          <label for="numbers-checkbox" class="numbers-label">
-            <input type="checkbox" id="numbers-checkbox" name="Include Numbers Checkbox" value="numbers" />
-            <span class="checkmark"></span>
-            Include Numbers
-          </label>
-
-          <label for="symbols-checkbox" class="symbols-label">
-            <input type="checkbox" id="symbols-checkbox" name="Include Symbols Checkbox" value="symbols" />
-            <span class="checkmark"></span>
-            Include Symbols
-          </label>
-        </fieldset>
-
-        <div class="strength-container">
-          <h3>Strength</h3>
-          <h4 id="password-strength-text"></h4>
-          <div class="strength-bars" id="too-weak"></div>
-          <div class="strength-bars" id="weak"></div>
-          <div class="strength-bars" id="medium"></div>
-          <div class="strength-bars" id="strong"></div>
+        <div class="result-container wrapper flex-center bg-dark">
+          <p class="password text-light" aria-live="polite">P4$5W0rD!</p>
+          <button class="copy-button flex-center">
+            <span class="hidden">copied</span>
+            <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z"
+                fill="#A4FFAF"
+              />
+            </svg>
+          </button>
         </div>
 
-        <button id="generate-button">
-          Generate
-          <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" alt="right arrow icon">
-            <path class="button-arrow" fill="#24232C" d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z" />
-          </svg>
-        </button>
-      </section>
+        <form class="flow-content wrapper bg-dark">
+          <div class="form-group length">
+            <label for="length-slider">Character Length</label>
+            <span class="length-count">0</span>
+            <input type="range" name="password-length" id="length-slider" min="0" max="20" value="8" />
+          </div>
+
+          <fieldset class="form-group checkboxes">
+            <legend class="visually-hidden">Check which characters to include in password</legend>
+
+            <label for="uppercase">
+              <input type="checkbox" name="uppercase" id="uppercase" />
+              Include Uppercase Letters
+            </label>
+
+            <label for="lowercase">
+              <input type="checkbox" name="lowercase" id="lowercase" />
+              Include Lowercase Letters
+            </label>
+
+            <label for="numbers">
+              <input type="checkbox" name="numbers" id="numbers" />
+              Include Numbers
+            </label>
+
+            <label for="symbols">
+              <input type="checkbox" name="symbols" id="symbols" />
+              Include Symbols
+            </label>
+          </fieldset>
+
+          <div class="password-strength flex-center">
+            <p class="title">Strength</p>
+            <span class="text" aria-live="polite">MEDIUM</span>
+            <div class="bar" data-strength="too-weak" data-color="red"></div>
+            <div class="bar" data-strength="weak" data-color="orange"></div>
+            <div class="bar" data-strength="medium" data-color="yellow"></div>
+            <div class="bar" data-strength="strong" data-color="green"></div>
+          </div>
+
+          <button class="button" type="submit">
+            Generate
+            <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" alt="">
+              <path fill="#24232C" d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z" />
+            </svg>
+          </button>
+        </form>
+      </div>
     </main>
   </body>
 </html>
