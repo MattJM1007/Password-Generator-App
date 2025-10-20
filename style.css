@@ -150,8 +150,15 @@ body {
   padding: 1rem;
 }
 
+@media (width > 30em) {
+  .wrapper {
+    padding: 2rem;
+  }
+}
+
 .result-container {
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 /* components */
@@ -160,6 +167,17 @@ body {
   border: 0;
   color: var(--clr-primary-green);
   text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 200ms ease-in-out;
+}
+
+.copy-button:active {
+  transform: scale(0.8);
+}
+
+.copy-button:hover svg path,
+.copy-button:focus-visible {
+  fill: var(--clr-neutral-200);
 }
 
 .button {
@@ -169,11 +187,17 @@ body {
   background: var(--clr-primary-green);
   border: 2px solid transparent;
   cursor: pointer;
-  transition: all 200ms ease-in-out;
+  transition: background 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+@media (width >30em) {
+  .button {
+    --flow-spacer: 2rem;
+  }
 }
 
 .button svg path {
-  transition: all 300ms ease-in-out;
+  transition: fill 300ms ease-in-out;
 }
 
 .button:hover,
@@ -188,6 +212,117 @@ body {
   fill: var(--clr-primary-green);
 }
 
+input[type="range"] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  aspect-ratio: 1;
+  background: var(--clr-neutral-200);
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"]::-webkit-slider-thumb:focus-visible {
+  background: var(--clr-neutral-700);
+  border: 2px solid var(--clr-primary-green);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  aspect-ratio: 1;
+  background: var(--clr-neutral-200);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb:hover,
+input[type="range"]::-moz-range-thumb:focus-visible {
+  background: var(--clr-neutral-700);
+  border: 2px solid var(--clr-primary-green);
+}
+
+input[type="range"]::-ms-thumb {
+  width: 28px;
+  aspect-ratio: 1;
+  background: var(--clr-neutral-200);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb:hover,
+input[type="range"]::-ms-thumb:focus-visible {
+  background: var(--clr-neutral-700);
+  border: 2px solid var(--clr-primary-green);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--clr-primary-green) var(--progress), var(--clr-neutral-700) var(--progress));
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: linear-gradient(to right, var(--clr-primary-green) var(--progress), var(--clr-neutral-700) var(--progress));
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+
+  height: 8px;
+  background: linear-gradient(to right, var(--clr-primary-green) var(--progress), var(--clr-neutral-700) var(--progress));
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none; /* Add if not using autoprefixer */
+  appearance: none;
+  margin: 0; /* Not removed via appearance */
+
+  width: 1.25rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+  border: 2px solid var(--clr-neutral-200);
+  transition: all 200ms ease-in-out;
+}
+
+input[type="checkbox"]:checked {
+  background: var(--clr-primary-green);
+  border: 2px solid var(--clr-primary-green);
+}
+
+input[type="checkbox"]::before {
+  content: url(./assets/images/icon-check.svg);
+  position: absolute;
+  transform: translate(1px, -5px);
+  max-height: 100%;
+  scale: 0;
+  transition: scale 200ms ease-in-out;
+}
+
+input[type="checkbox"]:checked::before {
+  scale: 1;
+}
+
 /* form */
 .form-group.length {
   display: grid;
@@ -198,6 +333,7 @@ body {
 }
 
 .form-group input[type="range"] {
+  --progress: 40%;
   grid-column: 1 / -1;
 }
 
@@ -207,11 +343,74 @@ body {
   color: var(--clr-primary-green);
 }
 
-fieldset label {
-  display: block;
-}
-
 .form-group.checkboxes {
+  --flow-spacer: 2rem;
   border: 0;
   padding: 0;
+}
+
+.form-group.checkboxes label {
+  display: block;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: clamp(1em, 3vw, 1.25em);
+  align-items: center;
+  margin-block-start: 1rem;
+}
+
+.password-strength {
+  --flow-spacer: 2rem;
+  --flex-gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background: var(--clr-neutral-700);
+}
+
+@media (width > 30em) {
+  .password-strength {
+    padding: 1.5rem;
+  }
+}
+
+.password-strength .text {
+  margin-inline-start: auto;
+  margin-inline-end: var(--flex-gap);
+  text-transform: uppercase;
+}
+
+.password-strength .bar {
+  --bar-color: var(--clr-neutral-200);
+  border: 2px solid var(--bar-color);
+  height: 1.75em;
+  width: 0.6em;
+}
+
+.password-strength .too-weak {
+  --bar-color: var(--clr-primary-red);
+  background: var(--bar-color);
+}
+
+.password-strength:has(.weak) .bar {
+  --bar-color: var(--clr-primary-orange);
+  background: var(--bar-color);
+}
+
+.password-strength .weak ~ .bar {
+  --bar-color: var(--clr-neutral-200);
+  background: transparent;
+}
+
+.password-strength:has(.medium) .bar {
+  --bar-color: var(--clr-primary-yellow);
+  background: var(--bar-color);
+}
+
+.password-strength .medium ~ .bar {
+  --bar-color: var(--clr-neutral-200);
+  background: transparent;
+}
+
+.password-strength:has(.strong) .bar {
+  --bar-color: var(--clr-primary-green);
+  background: var(--bar-color);
 }
