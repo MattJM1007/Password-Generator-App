@@ -23,7 +23,13 @@ function updateSlider() {
   slider.style.setProperty("--progress", `${percentage}%`);
 }
 
-updateSlider();
+function initializeSlider() {
+  const defaultLength = 8;
+  slider.value = defaultLength;
+  updateSlider();
+}
+
+initializeSlider();
 
 //----Generate Password----
 
@@ -85,7 +91,7 @@ function generatePassword(e) {
 
 //----Enable Copy Button----
 
-async function copyToClipbaord(text) {
+async function copyToClipboard(text) {
   try {
     await navigator.clipboard.writeText(text);
     console.log("Copied!");
@@ -99,4 +105,4 @@ async function copyToClipbaord(text) {
 
 slider.addEventListener("input", updateSlider);
 form.addEventListener("submit", generatePassword);
-copyButton.addEventListener("click", () => copyToClipbaord(passwordEl.textContent));
+copyButton.addEventListener("click", () => copyToClipboard(passwordEl.textContent));
