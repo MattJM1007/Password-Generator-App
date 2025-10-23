@@ -17,6 +17,8 @@
   --clr-primary-orange: hsl(13, 95%, 66%);
   --clr-primary-yellow: hsl(42, 91%, 68%);
 
+  --clr-accent-error: hsl(0, 91%, 63%);
+
   --ff-base: "JetBrains Mono", monospace;
 
   --fs-400: calc(18 / 16 * 1rem);
@@ -24,11 +26,13 @@
   --fs-600: calc(32 / 16 * 1rem);
 
   --fs-heading: var(--fs-500);
+  --fs-strength: var(--fs-400);
 }
 
 @media (width > 30em) {
   :root {
     --fs-heading: var(--fs-600);
+    --fs-strength: var(--fs-500);
   }
 }
 
@@ -109,6 +113,10 @@ body {
 
 .password {
   font-size: var(--fs-heading);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }
 
 /* utilities */
@@ -349,6 +357,10 @@ input[type="checkbox"]:checked::before {
   padding: 0;
 }
 
+.form-group.checkboxes .error {
+  color: var(--clr-accent-error);
+}
+
 .form-group.checkboxes label {
   display: block;
   display: grid;
@@ -375,7 +387,7 @@ input[type="checkbox"]:checked::before {
 .password-strength .text {
   margin-inline-start: auto;
   margin-inline-end: var(--flex-gap);
-  text-transform: uppercase;
+  font-size: var(--fs-strength);
 }
 
 .password-strength .bar {
