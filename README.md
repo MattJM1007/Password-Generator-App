@@ -4,7 +4,7 @@ A password generator that lets users customize length and character types and vi
 
 ![App Screenshot](./screenshot.png)
 
-[Live Demo](https://mattjm1007.github.io/Password-Generator-App/) · [View Code](https://github.com/MattJM1007/Password-Generator-App)
+[Live Demo](https://matt-miguel.github.io/Password-Generator-App/) · [View Code](https://github.com/matt-miguel/Password-Generator-App)
 
 ---
 
@@ -47,7 +47,7 @@ The slider and checkboxes were customized with CSS by visually hiding the native
 ## Getting Started
 
 ```bash
-git clone https://github.com/MattJM1007/Password-Generator-App
+git clone https://github.com/matt-miguel/Password-Generator-App
 ```
 
 This is a vanilla JS project with no build step. Clone the repo and open index.html in your browser.
